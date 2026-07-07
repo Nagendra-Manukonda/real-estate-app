@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap");
+
+@import "tailwindcss";
+
+@theme inline {
+  /* Colors */
+  --color-ink: #16233A;
+  --color-ink-soft: #4B5A70;
+  --color-paper: #F3F5F1;
+  --color-panel: #FFFFFF;
+  --color-line: #DCDFD6;
+  --color-brass: #A9782F;
+  --color-brick: #B23A2E;
+  --color-sage: #5C6F5C;
+
+  /* Fonts */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Radius */
+  --radius-card: 10px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+[id] {
+  scroll-margin-top: 84px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}

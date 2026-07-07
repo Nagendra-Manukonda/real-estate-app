@@ -1,0 +1,34 @@
+import { Property } from "@/app/types/property";
+import { buildGallery } from "@/app/lib/helpers";
+
+type RawProperty = Omit<Property, "images">;
+
+const RAW_PROPERTIES: RawProperty[] = [
+  { id: 1, title: "Maple Ridge Loft", price: 425000, beds: 2, baths: 2, city: "Austin", type: "Apartment", area: 1150, furnished: true, parking: true, pet: true, pool: false, garden: false, img: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80" },
+  { id: 2, title: "Cedar Hollow Villa", price: 1250000, beds: 5, baths: 4, city: "Austin", type: "Villa", area: 3400, furnished: false, parking: true, pet: true, pool: true, garden: true, img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80", isPro: true },
+  { id: 3, title: "Sunset Studio 4B", price: 180000, beds: 1, baths: 1, city: "Denver", type: "Studio", area: 520, furnished: true, parking: false, pet: false, pool: false, garden: false, img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80", deal: { label: "Price drop", discountPct: 8 } },
+  { id: 4, title: "Birchwood House", price: 610000, beds: 3, baths: 2, city: "Denver", type: "Independent House", area: 2100, furnished: false, parking: true, pet: true, pool: false, garden: true, img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80" },
+  { id: 5, title: "Harborline Flat 9", price: 349000, beds: 2, baths: 1, city: "Seattle", type: "Apartment", area: 980, furnished: true, parking: true, pet: false, pool: false, garden: false, img: "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=800&q=80", deal: { label: "Open house", discountPct: 0 } },
+  { id: 6, title: "Willow Creek Villa", price: 980000, beds: 4, baths: 3, city: "Seattle", type: "Villa", area: 2900, furnished: false, parking: true, pet: true, pool: true, garden: true, img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", isPro: true },
+  { id: 7, title: "Elm & Fifth Studio", price: 210000, beds: 1, baths: 1, city: "Austin", type: "Studio", area: 560, furnished: true, parking: false, pet: true, pool: false, garden: false, img: "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800&q=80" },
+  { id: 8, title: "Oakfield House", price: 725000, beds: 4, baths: 3, city: "Portland", type: "Independent House", area: 2450, furnished: false, parking: true, pet: false, pool: false, garden: true, img: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80" },
+  { id: 9, title: "Riverbend Apartment 2C", price: 395000, beds: 2, baths: 2, city: "Portland", type: "Apartment", area: 1080, furnished: true, parking: true, pet: true, pool: true, garden: false, img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80", deal: { label: "Price drop", discountPct: 5 } },
+  { id: 10, title: "Copper Lane Villa", price: 1450000, beds: 6, baths: 5, city: "Denver", type: "Villa", area: 4200, furnished: false, parking: true, pet: true, pool: true, garden: true, img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80", isPro: true },
+  { id: 11, title: "Pinehurst House", price: 540000, beds: 3, baths: 2, city: "Seattle", type: "Independent House", area: 1900, furnished: false, parking: true, pet: true, pool: false, garden: true, img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80" },
+  { id: 12, title: "Lantern Court Studio", price: 165000, beds: 1, baths: 1, city: "Portland", type: "Studio", area: 480, furnished: true, parking: false, pet: false, pool: false, garden: false, img: "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&q=80" },
+  { id: 13, title: "Ashford Row House", price: 465000, beds: 3, baths: 2, city: "Austin", type: "Independent House", area: 1850, furnished: false, parking: true, pet: true, pool: false, garden: true, img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80", deal: { label: "Price drop", discountPct: 6 } },
+  { id: 14, title: "Marigold Villa", price: 1120000, beds: 5, baths: 4, city: "Portland", type: "Villa", area: 3200, furnished: false, parking: true, pet: true, pool: true, garden: true, img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", isPro: true },
+  { id: 15, title: "Foundry Flat 6", price: 310000, beds: 1, baths: 1, city: "Denver", type: "Apartment", area: 700, furnished: true, parking: false, pet: false, pool: false, garden: false, img: "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=800&q=80" },
+  { id: 16, title: "Whitmore House", price: 590000, beds: 4, baths: 3, city: "Seattle", type: "Independent House", area: 2200, furnished: false, parking: true, pet: false, pool: false, garden: true, img: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80" },
+  { id: 17, title: "Northgate Studio 2", price: 145000, beds: 1, baths: 1, city: "Austin", type: "Studio", area: 500, furnished: true, parking: false, pet: true, pool: false, garden: false, img: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80", deal: { label: "Open house", discountPct: 0 } },
+  { id: 18, title: "Redwood Terrace Villa", price: 1340000, beds: 6, baths: 5, city: "Portland", type: "Villa", area: 4000, furnished: false, parking: true, pet: true, pool: true, garden: true, img: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&q=80", isPro: true },
+  { id: 19, title: "Ivywood Apartment 5A", price: 415000, beds: 2, baths: 2, city: "Denver", type: "Apartment", area: 1120, furnished: true, parking: true, pet: true, pool: true, garden: false, img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" },
+  { id: 20, title: "Fernbrook House", price: 675000, beds: 3, baths: 2, city: "Austin", type: "Independent House", area: 2000, furnished: false, parking: true, pet: true, pool: false, garden: true, img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80" },
+  { id: 21, title: "Crestline Villa", price: 890000, beds: 4, baths: 3, city: "Seattle", type: "Villa", area: 2750, furnished: false, parking: true, pet: true, pool: true, garden: true, img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", deal: { label: "Price drop", discountPct: 4 } },
+  { id: 22, title: "Hollow Pine Studio", price: 198000, beds: 1, baths: 1, city: "Denver", type: "Studio", area: 540, furnished: true, parking: false, pet: false, pool: false, garden: false, img: "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800&q=80" },
+];
+
+// This is the one line you'd replace with a real fetch from your API/DB.
+export const PROPERTIES: Property[] = RAW_PROPERTIES.map((p) => ({ ...p, images: buildGallery(p) }));
+
+export const CITIES = [...new Set(PROPERTIES.map((p) => p.city))];
