@@ -1,7 +1,7 @@
 "use client";
 
 import { RotateCcw } from "lucide-react";
-import { Filters, PropertyType } from "@/types/property";
+import { Filters, PropertyType } from "@/app/types/property";
 import PriceFilter from "./PriceFilter";
 import PropertyTypeFilter from "./PropertyType";
 import CityFilter from "./CityFilter";
