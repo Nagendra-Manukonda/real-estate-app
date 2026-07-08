@@ -1,8 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Classic numbered pagination, like Amazon/Flipkart search results —
-// Prev, a handful of page numbers, Next. No page reload: the parent just
-// swaps which slice of the array it renders.
 export default function Pagination({
     page,
     totalPages,

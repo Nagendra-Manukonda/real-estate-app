@@ -37,9 +37,6 @@ export default function PropertyGrid({
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [page, setPage] = useState(1);
 
-  // Jump back to page 1 whenever the filtered result set changes (new
-  // search, new filter, toggling saved-only) so you're never stranded on
-  // a page that no longer exists.
   useEffect(() => {
     setPage(1);
   }, [properties]);

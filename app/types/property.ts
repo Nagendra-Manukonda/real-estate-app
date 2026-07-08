@@ -2,7 +2,7 @@ export type PropertyType = "Apartment" | "Villa" | "Independent House" | "Studio
 
 export interface GalleryImage {
   url: string;
-  label: string; // e.g. "Bedroom", "Garden" — shown as a caption in the carousel
+  label: string;
 }
 
 export interface Property {
@@ -19,17 +19,15 @@ export interface Property {
   pet: boolean;
   pool: boolean;
   garden: boolean;
-  img: string; // cover / exterior photo, used in small thumbnails (e.g. deals list)
-  images: GalleryImage[]; // full gallery shown in the card carousel + details modal
-  isPro?: boolean; // featured / priority-placement listing (Pro plan)
+  img: string;
+  images: GalleryImage[];
+  isPro?: boolean;
   deal?: {
-    label: string; // e.g. "Price drop", "Open house"
+    label: string;
     discountPct: number;
   };
 }
 
-// Note: search text is handled separately (see hooks/useFilters.ts) so it can
-// be debounced independently of the rest of the filters.
 export interface Filters {
   min: string;
   max: string;

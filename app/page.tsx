@@ -1,9 +1,5 @@
 "use client";
 
-// The only page in the app. It owns the one piece of state every section
-// needs a slice of (showSavedOnly) and pulls the rest from useProperties,
-// then just passes props down — no other component talks to localStorage
-// or the raw PROPERTIES data directly.
 import { useState } from "react";
 import Navbar from "@/app/components/Navbar/Navbar";
 import Hero from "@/app/components/Hero/Hero";

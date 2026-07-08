@@ -14,19 +14,6 @@ export const DEFAULT_FILTERS: Filters = {
     amenities: [],
 };
 
-/**
- * Owns filter state AND the search box's debouncing.
- *
- * - `rawSearch` / `setRawSearch` — bind this to the search input directly.
- *   It updates on every keystroke so typing feels instant.
- * - `search` — the value that should actually be used to filter the list.
- *   It only updates SEARCH_DEBOUNCE_MS after the user stops typing, and
- *   only once at least SEARCH_MIN_LENGTH characters have been entered
- *   (clearing the box back to empty resets the filter immediately).
- *
- * This is what stops the property list from re-filtering on every single
- * letter typed.
- */
 export function useFilters() {
     const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
     const [rawSearch, setRawSearch] = useState("");
@@ -39,8 +26,7 @@ export function useFilters() {
             if (trimmed.length === 0 || trimmed.length >= SEARCH_MIN_LENGTH) {
                 setSearch(trimmed);
             }
-            // if it's 1 character (below the minimum), we simply don't update
-            // `search` yet — the previous, valid filter stays in place.
+
         }, SEARCH_DEBOUNCE_MS);
 
         return () => clearTimeout(timer);

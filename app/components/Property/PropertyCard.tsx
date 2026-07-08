@@ -1,7 +1,5 @@
 "use client";
 
-// A single listing card: photo carousel + badges + price/specs. Clicking
-// the card (photo or text) opens PropertyDetails in a modal.
 import { useState } from "react";
 import { Bed, Bath, MapPin, Ruler } from "lucide-react";
 import { Property } from "@/app/types/property";

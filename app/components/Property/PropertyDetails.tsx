@@ -6,8 +6,7 @@ import { formatPrice } from "@/app/lib/formatPrice";
 import { AMENITIES } from "@/app/lib/constants";
 import ImageCarousel from "./ImageCarousel";
 
-// Shown inside the modal when a card is clicked — full gallery + specs +
-// amenities for that one listing.
+
 export default function PropertyDetails({ property }: { property: Property }) {
   const activeAmenities = AMENITIES.filter((a) => (property as unknown as Record<string, boolean>)[a.key]);
 

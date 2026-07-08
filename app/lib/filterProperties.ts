@@ -2,7 +2,7 @@ import { Property, Filters } from "@/app/types/property";
 
 interface FilterArgs {
     filters: Filters;
-    search: string; // already debounced — see hooks/useFilters.ts
+    search: string;
     showSavedOnly: boolean;
     favorites: Set<number>;
 }

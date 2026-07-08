@@ -6,12 +6,7 @@ import { filterProperties } from "@/app/lib/filterProperties";
 import { useFilters } from "./useFilters";
 import { useFavorites } from "./useFavorites";
 
-/**
- * The single hook the page uses to get "the list of properties to show".
- * Combines: the raw data, filters + debounced search, favorites, and a
- * short simulated loading state (swap the effect below for a real
- * `fetch('/api/properties')` call once you have a backend).
- */
+
 export function useProperties(showSavedOnly: boolean) {
     const { filters, setFilters, rawSearch, setRawSearch, search, reset } = useFilters();
     const { favorites, count, isSaved, toggle } = useFavorites();

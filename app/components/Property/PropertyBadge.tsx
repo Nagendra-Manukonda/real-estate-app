@@ -2,7 +2,6 @@ import { Sparkles, Tag } from "lucide-react";
 import Badge from "@/app/components/Common/Badge";
 import { Property } from "@/app/types/property";
 
-// All the little overlay badges (type / Pro / deal) shown on a card's photo.
 export default function PropertyBadges({ property }: { property: Property }) {
   return (
     <>
