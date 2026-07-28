@@ -28,7 +28,6 @@ const RAW_PROPERTIES: RawProperty[] = [
   { id: 22, title: "Hollow Pine Studio", price: 198000, beds: 1, baths: 1, city: "Denver", type: "Studio", area: 540, furnished: true, parking: false, pet: false, pool: false, garden: false, img: "https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800&q=80" },
 ];
 
-// This is the one line you'd replace with a real fetch from your API/DB.
 export const PROPERTIES: Property[] = RAW_PROPERTIES.map((p) => ({ ...p, images: buildGallery(p) }));
 
 export const CITIES = [...new Set(PROPERTIES.map((p) => p.city))];

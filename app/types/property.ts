@@ -27,7 +27,6 @@ export interface Property {
     discountPct: number;
   };
 }
-
 export interface Filters {
   min: string;
   max: string;
@@ -37,4 +36,3 @@ export interface Filters {
   baths: number;
   amenities: string[];
 }
-

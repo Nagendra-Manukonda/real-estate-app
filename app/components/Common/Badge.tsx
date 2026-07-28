@@ -1,24 +1,26 @@
 import { ReactNode } from "react";
 
-type Tone = "ink" | "brass" | "brick";
+type Tone = "primary" | "secondary" | "danger" | "neutral" | "success";
 
 const TONE_STYLES: Record<Tone, string> = {
-    ink: "bg-ink/80 text-white",
-    brass: "bg-brass text-ink",
-    brick: "bg-brick text-white",
+    primary: "border border-primary/30 bg-primary text-white shadow-lg shadow-primary/20",
+    secondary: "border border-secondary/30 bg-secondary text-white shadow-lg shadow-secondary/20",
+    danger: "border border-danger/30 bg-danger text-white shadow-lg shadow-danger/20",
+    success: "border border-primary/30 bg-primary text-white shadow-lg shadow-primary/20",
+    neutral: "border border-white/20 bg-black/30 text-white backdrop-blur-xl shadow-xl",
 };
 
-export default function Badge({
-    children,
-    tone = "ink",
-    className = "",
-}: {
+interface BadgeProps {
     children: ReactNode;
     tone?: Tone;
     className?: string;
-}) {
+}
+
+export default function Badge({ children, tone = "neutral", className = "" }: BadgeProps) {
     return (
-        <span className={`inline-flex items-center gap-1 rounded-md px-2 py-1 text-[10px] font-semibold ${TONE_STYLES[tone]} ${className}`}>
+        <span
+            className={`inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] transition-all duration-300 ${TONE_STYLES[tone]} ${className}`}
+        >
             {children}
         </span>
     );

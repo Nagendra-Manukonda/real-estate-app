@@ -17,13 +17,31 @@ const config: Config = {
                 brick: "#B23A2E",
                 sage: "#5C6F5C",
             },
+
             fontFamily: {
                 display: ["Fraunces", "Georgia", "serif"],
                 body: ["Inter", "sans-serif"],
                 mono: ["IBM Plex Mono", "monospace"],
             },
+
             borderRadius: {
                 card: "10px",
+            },
+
+            keyframes: {
+                "porchlight-scroll": {
+                    "0%": {
+                        transform: "translateX(0)",
+                    },
+                    "100%": {
+                        transform: "translateX(-50%)",
+                    },
+                },
+            },
+
+            animation: {
+                "porchlight-scroll":
+                    "porchlight-scroll 36s linear infinite",
             },
         },
     },

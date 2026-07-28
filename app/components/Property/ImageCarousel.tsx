@@ -1,101 +1,43 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { GalleryImage } from "@/app/types/property";
 
-interface GalleryImage {
-  url: string;
-  label: string;
-}
+export default function ImageCarousel({ images }: { images: GalleryImage[] }) {
+  const [index, setIndex] = useState(0);
 
-interface ImageCarouselProps {
-  images: GalleryImage[];
-}
-
-export default function ImageCarousel({
-  images,
-}: ImageCarouselProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const previousImage = (
-    e: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    e.stopPropagation();
-
-    setCurrentIndex((prev) =>
-      prev === 0 ? images.length - 1 : prev - 1
-    );
-  };
-
-  const nextImage = (
-    e: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    e.stopPropagation();
-
-    setCurrentIndex((prev) =>
-      prev === images.length - 1 ? 0 : prev + 1
-    );
+  const go = (delta: number, e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setIndex((i) => (i + delta + images.length) % images.length);
   };
 
   return (
-    <div className="relative h-64 w-full overflow-hidden rounded-t-2xl group">
+    <div className="group relative h-full w-full">
+      <Image src={images[index].url} alt={images[index].label} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover" />
 
-      {/* Image */}
-
-      <img
-        src={images[currentIndex].url}
-        alt={images[currentIndex].label}
-        className="w-full h-full object-cover transition duration-500"
-      />
-
-      {/* Image Label */}
-
-      <span className="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full">
-        {images[currentIndex].label}
+      <span className="absolute bottom-2 right-2 rounded-md bg-black/60 px-2 py-0.5 text-[10px] font-semibold text-white">
+        {images[index].label}
       </span>
 
-      {/* Previous Button */}
-
       {images.length > 1 && (
-        <button
-          onClick={previousImage}
-          className="absolute left-3 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition"
-        >
-          <ChevronLeft size={18} />
-        </button>
-      )}
-
-      {/* Next Button */}
-
-      {images.length > 1 && (
-        <button
-          onClick={nextImage}
-          className="absolute right-3 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition"
-        >
-          <ChevronRight size={18} />
-        </button>
-      )}
-
-      {/* Navigation Dots */}
-
-      {images.length > 1 && (
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
-
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={(e) => {
-                e.stopPropagation();
-                setCurrentIndex(index);
-              }}
-              className={`transition-all rounded-full ${currentIndex === index
-                  ? "bg-white w-6 h-2"
-                  : "bg-white/60 w-2 h-2"
-                }`}
-            />
-          ))}
-
-        </div>
+        <>
+          <button onClick={(e) => go(-1, e)} aria-label="Previous photo"
+            className="absolute left-1.5 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-ink opacity-0 transition-opacity group-hover:opacity-100">
+            <ChevronLeft size={15} />
+          </button>
+          <button onClick={(e) => go(1, e)} aria-label="Next photo"
+            className="absolute right-1.5 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-full bg-white/85 text-ink opacity-0 transition-opacity group-hover:opacity-100">
+            <ChevronRight size={15} />
+          </button>
+          <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1.5">
+            {images.map((_, i) => (
+              <button key={i} aria-label={`Go to photo ${i + 1}`} onClick={(e) => { e.stopPropagation(); setIndex(i); }}
+                className={"h-1.5 w-1.5 rounded-full transition-all " + (i === index ? "w-3.5 bg-white" : "bg-white/60")} />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

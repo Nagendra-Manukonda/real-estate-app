@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Mailbox, Menu, X } from "lucide-react";
+import { Heart, Menu, X } from "lucide-react";
 import SearchBar from "./SearchBar";
 import MobileMenu from "./MobileMenu";
+import ThemeToggle from "./ThemeToggle";
 import { scrollToId } from "@/app/lib/helpers";
 
 const NAV_LINKS = [
@@ -30,21 +31,20 @@ export default function Navbar({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-panel/95 backdrop-blur">
-      <div className="mx-auto flex max-w-9xl items-center gap-4 px-4 py-3 md:px-6">
+    <header className="sticky top-0 z-30 border-b border-line bg-panel/90 backdrop-blur-md transition-colors duration-300">
+      <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 md:px-6">
         <button type="button" onClick={() => scrollToId("top")} className="flex items-center gap-2 shrink-0">
-          <span className="h-2.5 w-2.5 rotate-45 rounded-[2px] bg-brass" />
-          <span className="font-display text-xl font-semibold tracking-tight text-ink">Porchlight</span>
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-white font-display text-sm font-bold">P</span>
+          <span className="font-display text-lg font-semibold tracking-tight text-ink">Porchlight</span>
         </button>
 
-        {/* Desktop nav links — scroll to section, don't touch the URL hash */}
         <nav className="ml-4 hidden gap-6 md:flex">
           {NAV_LINKS.map((l) => (
             <button
               key={l.id}
               type="button"
               onClick={() => scrollToId(l.id)}
-              className="text-sm font-medium text-ink-soft hover:text-ink transition-colors"
+              className="text-sm font-medium text-ink-soft transition-colors hover:text-primary"
             >
               {l.label}
             </button>
@@ -59,14 +59,16 @@ export default function Navbar({
           type="button"
           onClick={onToggleSavedOnly}
           className={
-            "hidden shrink-0 items-center gap-2 rounded-full border px-3 py-2 text-sm font-semibold transition-colors md:flex " +
-            (showSavedOnly ? "border-ink bg-ink text-paper" : "border-line bg-panel text-ink")
+            "hidden shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors md:flex " +
+            (showSavedOnly ? "border-primary bg-primary text-white" : "border-line bg-panel text-ink")
           }
         >
-          <Mailbox size={16} className={showSavedOnly ? "text-rose-200" : "text-brick"} />
+          <Heart size={16} className={showSavedOnly ? "text-white" : "text-danger"} fill={showSavedOnly ? "currentColor" : "none"} />
           Saved
           <span className="font-mono text-xs">{savedCount}</span>
         </button>
+
+        <ThemeToggle />
 
         <button
           type="button"

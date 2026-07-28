@@ -10,9 +10,7 @@ import BathroomFilter from "./BathroomFilter";
 import Amenities from "./Amenities";
 
 export default function FilterSidebar({
-    filters,
-    setFilters,
-    onReset,
+    filters, setFilters, onReset,
 }: {
     filters: Filters;
     setFilters: (updater: (f: Filters) => Filters) => void;
@@ -25,10 +23,10 @@ export default function FilterSidebar({
         setFilters((f) => ({ ...f, amenities: f.amenities.includes(key) ? f.amenities.filter((x) => x !== key) : [...f.amenities, key] }));
 
     return (
-        <div className="flex w-full flex-col gap-6 md:w-64">
+        <div className="flex w-full flex-col gap-6 rounded-3xl border border-line bg-panel p-5 md:w-64 md:bg-transparent md:border-0 md:p-0">
             <div className="flex items-center justify-between">
-                <h2 className="font-mono text-[11px] uppercase tracking-wider text-ink-soft">Refine</h2>
-                <button onClick={onReset} className="flex items-center gap-1 text-[11.5px] font-semibold text-brass">
+                <h2 className="font-display text-base font-semibold text-ink">Refine Search</h2>
+                <button onClick={onReset} className="flex items-center gap-1 text-[11.5px] font-semibold text-primary">
                     <RotateCcw size={13} /> Reset
                 </button>
             </div>

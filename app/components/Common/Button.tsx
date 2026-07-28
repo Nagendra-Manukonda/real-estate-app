@@ -1,22 +1,65 @@
 import { ButtonHTMLAttributes } from "react";
 
-type Variant = "dark" | "outline" | "brass";
+type Variant =
+    | "primary"
+    | "secondary"
+    | "outline"
+    | "ghost"
+    | "danger"
+    | "brass"; // alias for "secondary", kept so older callers don't break
 
 const VARIANT_STYLES: Record<Variant, string> = {
-    dark: "bg-ink text-paper hover:bg-ink/90",
-    outline: "border border-line text-ink hover:border-brass bg-transparent",
-    brass: "bg-brass text-ink hover:bg-brass/90",
+    primary: `
+    bg-primary text-white border border-primary shadow-sm
+    hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5
+  `,
+    secondary: `
+    bg-secondary text-white border border-secondary shadow-sm
+    hover:bg-secondary/90 hover:shadow-lg hover:-translate-y-0.5
+  `,
+    brass: `
+    bg-secondary text-white border border-secondary shadow-sm
+    hover:bg-secondary/90 hover:shadow-lg hover:-translate-y-0.5
+  `,
+    outline: `
+    bg-panel text-ink border border-line
+    hover:border-primary hover:text-primary hover:bg-primary/5
+  `,
+    ghost: `
+    bg-transparent text-ink-soft
+    hover:bg-surface hover:text-primary
+  `,
+    danger: `
+    bg-danger text-white border border-danger
+    hover:bg-danger/90 hover:-translate-y-0.5
+  `,
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: Variant;
 }
 
-export default function Button({ variant = "dark", className = "", ...rest }: ButtonProps) {
+export default function Button({
+    variant = "primary",
+    className = "",
+    children,
+    ...rest
+}: ButtonProps) {
     return (
         <button
             {...rest}
-            className={`rounded-lg px-5 py-2.5 text-sm font-semibold transition-colors ${VARIANT_STYLES[variant]} ${className}`}
-        />
+            className={`
+        inline-flex items-center justify-center gap-2
+        rounded-full px-6 py-3
+        text-sm font-semibold
+        transition-all duration-300 ease-out
+        disabled:cursor-not-allowed disabled:opacity-50
+        focus:outline-none focus:ring-2 focus:ring-primary/30
+        ${VARIANT_STYLES[variant]}
+        ${className}
+      `}
+        >
+            {children}
+        </button>
     );
 }

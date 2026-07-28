@@ -6,7 +6,6 @@ import { filterProperties } from "@/app/lib/filterProperties";
 import { useFilters } from "./useFilters";
 import { useFavorites } from "./useFavorites";
 
-
 export function useProperties(showSavedOnly: boolean) {
     const { filters, setFilters, rawSearch, setRawSearch, search, reset } = useFilters();
     const { favorites, count, isSaved, toggle } = useFavorites();
