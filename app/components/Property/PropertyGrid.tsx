@@ -65,7 +65,7 @@ export default function PropertyGrid({
 
         {drawerOpen && (
           <div className="fixed inset-0 z-40 bg-black/40 md:hidden" onClick={() => setDrawerOpen(false)}>
-            <div className="absolute right-0 top-0 h-full w-[84%] max-w-xs overflow-y-auto bg-panel p-5" onClick={(e) => e.stopPropagation()}>
+            <div className="absolute right-0 top-0 h-full w-[84%] max-w-xs overflow-y-auto p-5" onClick={(e) => e.stopPropagation()}>
               <button onClick={() => setDrawerOpen(false)} className="mb-4 flex h-8 w-8 items-center justify-center rounded-full border border-line">
                 <X size={14} />
               </button>
@@ -81,7 +81,7 @@ export default function PropertyGrid({
             <EmptyState message="No properties match these filters yet. Try widening your price range or clearing a filter." />
           ) : (
             <>
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-6 p-1 sm:grid-cols-2 lg:grid-cols-3">
                 {pageItems.map((p) => (
                   <PropertyCard key={p.id} property={p} saved={isSaved(p.id)} onToggle={toggle} />
                 ))}

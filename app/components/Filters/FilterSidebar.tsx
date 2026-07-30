@@ -26,7 +26,7 @@ export default function FilterSidebar({
         <div className="flex w-full flex-col gap-6 rounded-3xl border border-line bg-panel p-5 md:w-64 md:bg-transparent md:border-0 md:p-0">
             <div className="flex items-center justify-between">
                 <h2 className="font-display text-base font-semibold text-ink">Refine Search</h2>
-                <button onClick={onReset} className="flex items-center gap-1 text-[11.5px] font-semibold text-primary">
+                <button onClick={onReset} className="flex items-center cursor-pointer gap-1 text-[11.5px] font-semibold text-primary">
                     <RotateCcw size={13} /> Reset
                 </button>
             </div>

@@ -5,9 +5,9 @@ export default function FeaturedDeals() {
     const deals = PROPERTIES.filter((p) => p.deal).slice(0, 6);
 
     return (
-        <section id="deals" className="border-y border-line bg-surface py-20 transition-colors duration-300">
+        <section id="deals" className="border-y border-line py-20 transition-colors duration-300">
             <div className="mx-auto max-w-7xl px-4 md:px-6">
-                <span className="inline-flex items-center rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-secondary">
+                <span className="inline-flex items-center rounded-full border border-secondary bg-yellow-400/80 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-white">
                     Featured Deals
                 </span>
                 <h2 className="mt-3 font-display text-3xl font-semibold text-ink">

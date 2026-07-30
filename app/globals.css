@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
+@theme {
   --color-paper: #F8FAFC;
   --color-panel: #FFFFFF;
   --color-surface: #F1F5F9;
@@ -12,17 +12,17 @@
   --color-ink-soft: #64748B;
   --color-line: #E2E8F0;
 
-  --color-ink-fixed: #0F172A;
+  --color-ink-fixed: #1A4D30;
   --color-paper-fixed: #F8FAFC;
 
 
   --color-footer: #0F172A;
 
-  --color-primary: #256F5A;
-  --color-primary-hover: #1D5B49;
+  --color-primary: #2E8B57;
+  --color-primary-hover: #1A4D30;
 
-  --color-secondary: #C79B46;
-  --color-secondary-hover: #B68934;
+  --color-secondary: #FFFFFF;
+  --color-secondary-hover: #FFFFFF;
   --color-success: #16A34A;
   --color-danger: #DC2626;
 
@@ -51,11 +51,11 @@
 
   --color-footer: #000000;
 
-  --color-primary: #4BAE84;
-  --color-primary-hover: #3D9A73;
+  --color-primary: #2E8B57;
+  --color-primary-hover: #33bb82;
 
   --color-secondary: #D5AF63;
-  --color-secondary-hover: #C89E4C;
+  --color-secondary-hover: #c8884c;
 
   --color-success: #4ADE80;
   --color-danger: #FB7185;

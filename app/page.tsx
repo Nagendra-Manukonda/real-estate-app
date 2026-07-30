@@ -45,8 +45,8 @@ export default function Home() {
       />
 
       <Hero />
-      <ProSection />
       <FeaturedDeals />
+      <ProSection />
       <PropertyGrid
         properties={properties}
         total={total}

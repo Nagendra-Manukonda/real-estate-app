@@ -31,9 +31,9 @@ export default function Navbar({
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-line bg-panel/90 backdrop-blur-md transition-colors duration-300">
+    <header className="sticky top-0 z-30 border-b border-line bg-paper transition-colors duration-300">
       <div className="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 md:px-6">
-        <button type="button" onClick={() => scrollToId("top")} className="flex items-center gap-2 shrink-0">
+        <button type="button" onClick={() => scrollToId("top")} className="flex items-center cursor-pointer gap-2 shrink-0">
           <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-white font-display text-sm font-bold">P</span>
           <span className="font-display text-lg font-semibold tracking-tight text-ink">Porchlight</span>
         </button>
@@ -44,7 +44,7 @@ export default function Navbar({
               key={l.id}
               type="button"
               onClick={() => scrollToId(l.id)}
-              className="text-sm font-medium text-ink-soft transition-colors hover:text-primary"
+              className="text-sm font-medium cursor-pointer text-ink-soft transition-colors hover:text-primary"
             >
               {l.label}
             </button>
@@ -59,7 +59,7 @@ export default function Navbar({
           type="button"
           onClick={onToggleSavedOnly}
           className={
-            "hidden shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors md:flex " +
+            "hidden shrink-0 items-center cursor-pointer gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors md:flex " +
             (showSavedOnly ? "border-primary bg-primary text-white" : "border-line bg-panel text-ink")
           }
         >
@@ -72,7 +72,7 @@ export default function Navbar({
 
         <button
           type="button"
-          className="md:hidden shrink-0 rounded-lg border border-line p-2"
+          className="md:hidden cursor-pointer shrink-0 rounded-lg border border-line p-2"
           onClick={() => setMobileOpen((v) => !v)}
         >
           {mobileOpen ? <X size={18} /> : <Menu size={18} />}

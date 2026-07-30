@@ -23,7 +23,7 @@ export default function ListPropertyForm() {
         );
     }
 
-    const inputClass = "rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink shadow-sm outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20";
+    const inputClass = "rounded-xl border  border-line bg-paper px-4 py-3 text-sm text-ink shadow-sm outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20";
     const labelClass = "flex flex-col gap-2 text-xs font-semibold uppercase tracking-wide text-ink-soft";
 
     return (
@@ -39,7 +39,7 @@ export default function ListPropertyForm() {
             </label>
 
             <label className={labelClass}>Property type
-                <select required defaultValue="" className={inputClass}>
+                <select required defaultValue="" className="rounded-xl border  border-line bg-paper px-4 py-3 text-sm text-ink shadow-sm outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20 cursor-pointer">
                     <option value="" disabled>Select property type</option>
                     {TYPES.map((t) => <option key={t}>{t}</option>)}
                 </select>
@@ -65,14 +65,14 @@ export default function ListPropertyForm() {
 
             <div className="sm:col-span-2">
                 <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-ink-soft">Property images</p>
-                <div className="flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line bg-surface px-6 py-10 text-center">
-                    <UploadCloud className="h-6 w-6 text-primary" />
+                <div className="flex flex-col cursor-pointer items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-line bg-surface px-6 py-10 text-center">
+                    <UploadCloud className="h-6 w-6  text-primary" />
                     <p className="text-sm font-semibold text-primary">Upload Property Images</p>
                     <p className="text-xs text-ink-soft">PNG, JPG up to 10MB</p>
                 </div>
             </div>
 
-            <button type="submit" className="sm:col-span-2 w-fit rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-primary-hover hover:-translate-y-0.5">
+            <button type="submit" className="sm:col-span-2 w-fit rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-green-800 cursor-pointer hover:-translate-y-0.5">
                 Submit Listing
             </button>
         </form>

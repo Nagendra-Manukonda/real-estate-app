@@ -7,7 +7,6 @@ const STORAGE_KEY = "porchlight:theme";
 export function useTheme() {
     const [dark, setDark] = useState(false);
 
-    // Load saved preference on mount.
     useEffect(() => {
         const saved = window.localStorage.getItem(STORAGE_KEY);
         if (saved === "dark") setDark(true);

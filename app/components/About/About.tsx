@@ -7,7 +7,7 @@ const STATS = [
 
 export default function About() {
   return (
-    <section id="about" className="bg-paper py-24 transition-colors duration-300">
+    <section id="about" className="py-24 transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid items-center gap-16 lg:grid-cols-2">
           <div>

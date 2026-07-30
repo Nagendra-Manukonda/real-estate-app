@@ -8,8 +8,8 @@ export default function Amenities({ selected, onToggle }: { selected: string[]; 
             <span className="text-xs font-semibold uppercase tracking-wide text-ink-soft">Amenities</span>
             <div className="flex flex-col gap-1.5">
                 {AMENITIES.map((a) => (
-                    <label key={a.key} className="flex items-center gap-2 text-[13px] text-ink-soft">
-                        <input type="checkbox" checked={selected.includes(a.key)} onChange={() => onToggle(a.key)} className="accent-primary" />
+                    <label key={a.key} className="flex items-center gap-2 cursor-pointer text-[13px] text-ink-soft">
+                        <input type="checkbox" checked={selected.includes(a.key)} onChange={() => onToggle(a.key)} className="accent-primary cursor-pointer" />
                         {a.label}
                     </label>
                 ))}

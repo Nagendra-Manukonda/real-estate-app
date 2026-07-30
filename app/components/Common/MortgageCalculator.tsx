@@ -60,7 +60,7 @@ export default function MortgageCalculator() {
                     <select
                         value={years}
                         onChange={(e) => setYears(Number(e.target.value))}
-                        className="rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink shadow-sm outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                        className="rounded-xl border border-line cursor-pointer bg-paper px-4 py-3 text-sm text-ink shadow-sm outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
                     >
                         <option value={15}>15 Years</option>
                         <option value={30}>30 Years</option>

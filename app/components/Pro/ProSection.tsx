@@ -1,5 +1,4 @@
 import { Check, Sparkles } from "lucide-react";
-import Button from "@/app/components/Common/Button";
 
 const PERKS = [
     "Priority placement in search results",
@@ -23,7 +22,7 @@ export default function ProSection() {
                             exposure, and faster sales through Porchlight Pro.
                         </p>
                         <div className="mt-6 flex items-center gap-4">
-                            <Button variant="secondary">Upgrade to Pro — $29/mo</Button>
+                            <button className="bg-white text-green-800  inline-flex items-center justify-center gap-2 cursor-pointer rounded-full px-6 py-3 text-sm font-semibold transition-all duration-300 ease-out disabled:cursor-not-allowed disabled:opacity-50">Upgrade to Pro — $29/mo</button>
                             <span className="text-xs text-white/60">Cancel anytime</span>
                         </div>
                     </div>
