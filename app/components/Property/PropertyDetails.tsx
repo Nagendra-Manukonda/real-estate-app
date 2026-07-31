@@ -11,7 +11,7 @@ export default function PropertyDetails({ property }: { property: Property }) {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+      <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
         <ImageCarousel images={property.images} />
       </div>
 

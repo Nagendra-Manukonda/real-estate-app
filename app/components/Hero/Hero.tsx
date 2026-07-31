@@ -16,9 +16,9 @@ export default function Hero() {
         playsInline
         preload="auto"
         className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source src="/videos/villa-hero-35s.mp4" type="video/mp4" />
-      </video>
+        src="videos/villa-hero-35s.mp4"
+        onError={(e) => console.error("Video failed to load:", e.currentTarget.error)}
+      />
 
       <div className="absolute inset-0 bg-black/55" />
 

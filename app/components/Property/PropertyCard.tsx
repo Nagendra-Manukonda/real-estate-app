@@ -24,7 +24,7 @@ export default function PropertyCard({
       className="relative flex flex-col overflow-hidden rounded-3xl border border-line bg-panel shadow-sm duration-300 transition-shadow  hover:shadow-2xl
       "
     >
-      <div className="relative aspect-[4/3] bg-surface">
+      <div className="relative aspect-4/3 bg-surface">
         <ImageCarousel images={property.images} />
 
         <PropertyBadges property={property} />
