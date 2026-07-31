@@ -17,7 +17,7 @@ export default function Testimonials() {
                 <p className="mt-1 text-sm text-ink-soft">Real feedback from people who found their home through Porchlight.</p>
             </div>
             <div className="mx-auto mb-8 max-w-7xl">
-                <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+                <div className="overflow-hidden mask-[linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
                     <div className="flex w-max animate-porchlight-scroll gap-4 px-6">
                         {loop.map((t, i) => (
                             <div key={i} className="w-64 shrink-0 rounded-3xl border border-line bg-paper p-5 shadow-sm">
