@@ -14,7 +14,6 @@ export const metadata: Metadata = {
     "Luxury Homes", "Buy House", "Sell Property", "Mortgage", "Porchlight",
   ],
   authors: [{ name: "Porchlight" }],
-  icons: { icon: "/favicon.ico" },
   openGraph: {
     title: "Porchlight | Premium Real Estate",
     description:
@@ -34,7 +33,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
+    <html lang="en" suppressHydrationWarning>
       <body className="bg-paper text-ink antialiased transition-colors duration-300">
         <Providers>{children}</Providers>
       </body>

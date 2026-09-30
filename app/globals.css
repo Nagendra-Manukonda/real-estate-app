@@ -21,8 +21,8 @@
   --color-primary: #2E8B57;
   --color-primary-hover: #1A4D30;
 
-  --color-secondary: #FFFFFF;
-  --color-secondary-hover: #FFFFFF;
+  --color-secondary: #D5AF63;
+  --color-secondary-hover: #c8884c;
   --color-success: #16A34A;
   --color-danger: #DC2626;
 
@@ -130,30 +130,20 @@ body {
   animation-play-state: paused;
 }
 
-@keyframes porchlight-float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-.animate-porchlight-float {
-  animation: porchlight-float 5s ease-in-out infinite;
-}
-
-@keyframes porchlight-reveal {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  .animate-porchlight-scroll {
+    animation: none !important;
   }
 }

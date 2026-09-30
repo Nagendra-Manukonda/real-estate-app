@@ -15,8 +15,9 @@ export default function Hero() {
         loop
         playsInline
         preload="auto"
+        aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"
-        src="videos/villa-hero-35s.mp4"
+        src="/videos/villa-hero-35s.mp4"
         onError={(e) => console.error("Video failed to load:", e.currentTarget.error)}
       />
 
@@ -32,7 +33,7 @@ export default function Hero() {
             <h1 className="mt-6 font-display text-6xl font-bold leading-tight text-white">
               Discover a place
               <br />
-              you'll proudly
+              you&apos;ll proudly
               <span className="text-primary"> call home.</span>
             </h1>
 

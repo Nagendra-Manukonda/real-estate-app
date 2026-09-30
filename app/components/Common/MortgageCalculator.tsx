@@ -2,6 +2,10 @@
 
 import { useState } from "react";
 import { formatPrice } from "@/app/lib/formatPrice";
+import { inputClass } from "@/app/lib/styles";
+
+const fieldClass = `${inputClass} shadow-sm font-mono`;
+const selectClass = `${inputClass} shadow-sm cursor-pointer`;
 
 export default function MortgageCalculator() {
     const [price, setPrice] = useState(450000);
@@ -26,9 +30,10 @@ export default function MortgageCalculator() {
                     Home Price
                     <input
                         type="number"
+                        min={0}
                         value={price}
-                        onChange={(e) => setPrice(Number(e.target.value) || 0)}
-                        className="rounded-xl border border-line bg-paper px-4 py-3 font-mono text-sm text-ink shadow-sm outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                        onChange={(e) => setPrice(Math.max(0, Number(e.target.value) || 0))}
+                        className={fieldClass}
                     />
                 </label>
 
@@ -49,9 +54,11 @@ export default function MortgageCalculator() {
                     <input
                         type="number"
                         step={0.1}
+                        min={0}
+                        max={100}
                         value={rate}
-                        onChange={(e) => setRate(Number(e.target.value) || 0)}
-                        className="rounded-xl border border-line bg-paper px-4 py-3 font-mono text-sm text-ink shadow-sm outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                        onChange={(e) => setRate(Math.min(100, Math.max(0, Number(e.target.value) || 0)))}
+                        className={fieldClass}
                     />
                 </label>
 
@@ -60,7 +67,7 @@ export default function MortgageCalculator() {
                     <select
                         value={years}
                         onChange={(e) => setYears(Number(e.target.value))}
-                        className="rounded-xl border border-line cursor-pointer bg-paper px-4 py-3 text-sm text-ink shadow-sm outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20"
+                        className={selectClass}
                     >
                         <option value={15}>15 Years</option>
                         <option value={30}>30 Years</option>

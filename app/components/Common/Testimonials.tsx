@@ -20,10 +20,10 @@ export default function Testimonials() {
                 <div className="overflow-hidden mask-[linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
                     <div className="flex w-max animate-porchlight-scroll gap-4 px-6">
                         {loop.map((t, i) => (
-                            <div key={i} className="w-64 shrink-0 rounded-3xl border border-line bg-paper p-5 shadow-sm">
-                                <div className="mb-2 flex gap-0.5 text-secondary">
+                            <div key={i} aria-hidden={i >= TESTIMONIALS.length || undefined} className="w-64 shrink-0 rounded-3xl border border-line bg-paper p-5 shadow-sm">
+                                <div className="mb-2 flex gap-0.5 text-yellow-600" role="img" aria-label={`${t.stars} out of 5 stars`}>
                                     {Array.from({ length: 5 }).map((_, s) => (
-                                        <Star className="text-yellow-600" key={s} size={12} fill={s < t.stars ? "currentColor" : "none"} strokeWidth={1.5} />
+                                        <Star className="text-yellow-600" key={s} size={12} fill={s + 1 <= t.stars ? "currentColor" : "none"} strokeWidth={1.5} />
                                     ))}
                                 </div>
                                 <p className="text-[13px] leading-relaxed text-ink">&ldquo;{t.quote}&rdquo;</p>

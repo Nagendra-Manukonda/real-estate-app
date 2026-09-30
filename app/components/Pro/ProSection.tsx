@@ -29,7 +29,7 @@ export default function ProSection() {
                     <ul className="flex flex-col justify-center gap-3">
                         {PERKS.map((perk) => (
                             <li key={perk} className="flex items-start gap-3 text-sm text-white/90">
-                                <Check size={16} className="mt-0.5 shrink-0 text-secondary" />
+                                <Check size={16} className="mt-0.5 shrink-0 text-white" aria-hidden="true" />
                                 {perk}
                             </li>
                         ))}

@@ -23,9 +23,7 @@ export function useFilters() {
         const trimmed = rawSearch.trim();
 
         const timer = setTimeout(() => {
-            if (trimmed.length === 0 || trimmed.length >= SEARCH_MIN_LENGTH) {
-                setSearch(trimmed);
-            }
+            setSearch(trimmed.length >= SEARCH_MIN_LENGTH ? trimmed : "");
         }, SEARCH_DEBOUNCE_MS);
 
         return () => clearTimeout(timer);

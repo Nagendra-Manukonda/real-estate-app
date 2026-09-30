@@ -22,7 +22,7 @@ const LINK_IDS: Record<string, string> = {
 export default function Footer() {
     return (
         <div className="border-b border-paper-fixed/10">
-            <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-4 py-10 md:flex-row md:items-center md:px-6">
+            <section className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-4 py-10 md:flex-row md:items-center md:px-6">
                 <div>
                     <span className="inline-flex items-center rounded-full border border-secondary px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] ">
                         Get Started
@@ -37,7 +37,7 @@ export default function Footer() {
                 <Button className="shrink-0" onClick={() => scrollToId("list-property")}>
                     List Your Property
                 </Button>
-            </div>
+            </section>
 
             <footer className="bg-primary text-paper-fixed">
                 <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-4 md:px-6">
@@ -69,9 +69,9 @@ export default function Footer() {
                                                     {l}
                                                 </button>
                                             ) : (
-                                                <a href="#" className="text-sm text-paper-fixed/70 transition-colors hover:text-paper-fixed">
+                                                <span className="text-sm text-paper-fixed/70">
                                                     {l}
-                                                </a>
+                                                </span>
                                             )}
                                         </li>
                                     );

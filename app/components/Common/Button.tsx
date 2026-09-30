@@ -2,24 +2,14 @@ import { ButtonHTMLAttributes } from "react";
 
 type Variant =
   | "primary"
-  | "secondary"
   | "outline"
   | "ghost"
-  | "danger"
-  | "brass";
+  | "danger";
 
 const VARIANT_STYLES: Record<Variant, string> = {
   primary: `
     bg-primary text-white border border-primary shadow-sm
     hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5
-  `,
-  secondary: `
-    bg-secondary text-white border border-secondary shadow-sm
-    hover:bg-secondary/90 hover:shadow-lg hover:-translate-y-0.5
-  `,
-  brass: `
-    bg-secondary text-white border border-secondary shadow-sm
-    hover:bg-secondary/90 hover:shadow-lg hover:-translate-y-0.5
   `,
   outline: `
     bg-panel text-ink border border-line

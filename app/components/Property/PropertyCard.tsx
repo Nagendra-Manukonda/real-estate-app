@@ -6,7 +6,7 @@ import { formatPrice } from "@/app/lib/formatPrice";
 
 import FavouriteButton from "./FavouriteButton";
 import ImageCarousel from "./ImageCarousel";
-import PropertyBadges from "./PropertyBadge";
+import PropertyBadge from "./PropertyBadge";
 
 interface PropertyCardProps {
   property: Property;
@@ -21,13 +21,12 @@ export default function PropertyCard({
 }: PropertyCardProps) {
   return (
     <article
-      className="relative flex flex-col overflow-hidden rounded-3xl border border-line bg-panel shadow-sm duration-300 transition-shadow  hover:shadow-2xl
-      "
+      className="relative flex flex-col overflow-hidden rounded-3xl border border-line bg-panel shadow-sm transition-shadow duration-300 hover:shadow-2xl"
     >
       <div className="relative aspect-4/3 bg-surface">
         <ImageCarousel images={property.images} />
 
-        <PropertyBadges property={property} />
+        <PropertyBadge property={property} />
 
         <FavouriteButton
           saved={saved}
@@ -64,7 +63,7 @@ export default function PropertyCard({
 
           <span className="flex items-center gap-1">
             <Ruler size={13} />
-            {property.area.toLocaleString()} sqft
+            {property.area.toLocaleString("en-US")} sqft
           </span>
         </div>
       </div>

@@ -1,4 +1,5 @@
 {
     "files.autoSave": "onFocusChange",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "opencode-ui.opencodePath": "C:\\Users\\Admin\\.opencode-v1\\opencode-v1.cmd"
 }

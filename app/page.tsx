@@ -6,13 +6,13 @@ import Navbar from "@/app/components/Navbar/Navbar";
 import Hero from "@/app/components/Hero/Hero";
 import FeaturedDeals from "@/app/components/Deals/FeaturedDeals";
 import PropertyGrid from "@/app/components/Property/PropertyGrid";
+import ListPropertyForm from "@/app/components/Property/ListPropertyForm";
 import About from "@/app/components/About/About";
 import ProSection from "@/app/components/Pro/ProSection";
-import MortgageCalculator from "./components/Common/MortgageCalculator";
+import MortgageCalculator from "@/app/components/Common/MortgageCalculator";
+import Testimonials from "@/app/components/Common/Testimonials";
 import ContactInfo from "@/app/components/Contact/ContactInfo";
 import ContactForm from "@/app/components/Contact/ContactForm";
-import ListPropertyForm from "./components/Property/ListPropertyForm";
-import Testimonials from "./components/Common/Testimonials";
 import Footer from "@/app/components/Footer/Footer";
 
 import { useProperties } from "@/app/hooks/useProperties";
@@ -22,7 +22,6 @@ export default function Home() {
 
   const {
     properties,
-    total,
     loading,
     filters,
     setFilters,
@@ -33,6 +32,11 @@ export default function Home() {
     isSaved,
     toggle,
   } = useProperties(showSavedOnly);
+
+  const handleResetFilters = () => {
+    resetFilters();
+    setShowSavedOnly(false);
+  };
 
   return (
     <main className="min-h-screen bg-paper text-ink transition-colors duration-300">
@@ -49,12 +53,11 @@ export default function Home() {
       <ProSection />
       <PropertyGrid
         properties={properties}
-        total={total}
         loading={loading}
         showSavedOnly={showSavedOnly}
         filters={filters}
         setFilters={setFilters}
-        resetFilters={resetFilters}
+        resetFilters={handleResetFilters}
         isSaved={isSaved}
         toggle={toggle}
       />

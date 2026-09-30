@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import Button from "@/app/components/Common/Button";
+import { inputClass } from "@/app/lib/styles";
 
 export default function ContactForm() {
     const [submitted, setSubmitted] = useState(false);
-    const inputClass = "rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink outline-none transition-all duration-300 focus:border-primary focus:ring-2 focus:ring-primary/20";
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -17,14 +17,23 @@ export default function ContactForm() {
             <h3 className="font-display text-lg font-semibold text-ink">Get in touch</h3>
             <p className="-mt-2 text-xs text-ink-soft">Need assistance? We&apos;d love to hear from you.</p>
             {submitted ? (
-                <p className="text-sm font-medium text-primary">Thanks — we&apos;ve got your message and will reach out shortly.</p>
+                <p className="text-sm font-medium text-primary" role="status">Thanks — we&apos;ve got your message and will reach out shortly.</p>
             ) : (
                 <>
                     <div className="grid gap-4 sm:grid-cols-2">
-                        <input required placeholder="Full Name" className={inputClass} />
-                        <input required type="email" placeholder="Email Address" className={inputClass} />
+                        <label className="flex flex-col gap-1">
+                            <span className="sr-only">Full name</span>
+                            <input required autoComplete="name" placeholder="Full Name" className={inputClass} />
+                        </label>
+                        <label className="flex flex-col gap-1">
+                            <span className="sr-only">Email address</span>
+                            <input required type="email" autoComplete="email" placeholder="Email Address" className={inputClass} />
+                        </label>
                     </div>
-                    <textarea required rows={4} placeholder="How can we help?" className={inputClass} />
+                    <label className="flex flex-col gap-1">
+                        <span className="sr-only">Message</span>
+                        <textarea required rows={4} placeholder="How can we help?" className={inputClass} />
+                    </label>
                     <Button type="submit" className="self-start">Send Message</Button>
                 </>
             )}

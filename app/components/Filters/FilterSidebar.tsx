@@ -1,9 +1,9 @@
 "use client";
 
 import { RotateCcw } from "lucide-react";
-import { Filters, PropertyType } from "@/app/types/property";
+import { Filters, PropertyType, AmenityKey } from "@/app/types/property";
 import PriceFilter from "./PriceFilter";
-import PropertyTypeFilter from "./PropertyType";
+import PropertyTypeFilter from "./PropertyTypeFilter";
 import CityFilter from "./CityFilter";
 import BedroomFilter from "./BedroomFilter";
 import BathroomFilter from "./BathroomFilter";
@@ -19,7 +19,7 @@ export default function FilterSidebar({
     const toggleType = (t: PropertyType) =>
         setFilters((f) => ({ ...f, types: f.types.includes(t) ? f.types.filter((x) => x !== t) : [...f.types, t] }));
 
-    const toggleAmenity = (key: string) =>
+    const toggleAmenity = (key: AmenityKey) =>
         setFilters((f) => ({ ...f, amenities: f.amenities.includes(key) ? f.amenities.filter((x) => x !== key) : [...f.amenities, key] }));
 
     return (

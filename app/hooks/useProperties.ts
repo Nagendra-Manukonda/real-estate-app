@@ -6,6 +6,8 @@ import { filterProperties } from "@/app/lib/filterProperties";
 import { useFilters } from "./useFilters";
 import { useFavorites } from "./useFavorites";
 
+const UNFILTERED = new Set<number>();
+
 export function useProperties(showSavedOnly: boolean) {
     const { filters, setFilters, rawSearch, setRawSearch, search, reset } = useFilters();
     const { favorites, count, isSaved, toggle } = useFavorites();
@@ -16,21 +18,21 @@ export function useProperties(showSavedOnly: boolean) {
         return () => clearTimeout(timer);
     }, []);
 
+    const favoritesForFilter = showSavedOnly ? favorites : UNFILTERED;
+
     const properties = useMemo(
-        () => filterProperties(PROPERTIES, { filters, search, showSavedOnly, favorites }),
-        [filters, search, showSavedOnly, favorites]
+        () => filterProperties(PROPERTIES, { filters, search, showSavedOnly, favorites: favoritesForFilter }),
+        [filters, search, showSavedOnly, favoritesForFilter]
     );
 
     return {
         properties,
-        total: PROPERTIES.length,
         loading,
         filters,
         setFilters,
         rawSearch,
         setRawSearch,
         resetFilters: reset,
-        favorites,
         count,
         isSaved,
         toggle,

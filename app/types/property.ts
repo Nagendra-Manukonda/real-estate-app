@@ -1,5 +1,7 @@
 export type PropertyType = "Apartment" | "Villa" | "Independent House" | "Studio";
 
+export type AmenityKey = "furnished" | "parking" | "pet" | "pool" | "garden";
+
 export interface GalleryImage {
   url: string;
   label: string;
@@ -34,5 +36,5 @@ export interface Filters {
   city: string;
   beds: number;
   baths: number;
-  amenities: string[];
+  amenities: AmenityKey[];
 }

@@ -6,14 +6,7 @@ import SearchBar from "./SearchBar";
 import MobileMenu from "./MobileMenu";
 import ThemeToggle from "./ThemeToggle";
 import { scrollToId } from "@/app/lib/helpers";
-
-const NAV_LINKS = [
-  { id: "listings", label: "Listings" },
-  { id: "deals", label: "Deals" },
-  { id: "pro", label: "Pro" },
-  { id: "about", label: "About" },
-  { id: "contact", label: "Contact" },
-];
+import { NAV_LINKS } from "@/app/lib/constants";
 
 export default function Navbar({
   search,
@@ -58,12 +51,13 @@ export default function Navbar({
         <button
           type="button"
           onClick={onToggleSavedOnly}
+          aria-pressed={showSavedOnly}
           className={
             "hidden shrink-0 items-center cursor-pointer gap-2 rounded-full border px-4 py-2 text-sm font-semibold transition-colors md:flex " +
             (showSavedOnly ? "border-primary bg-primary text-white" : "border-line bg-panel text-ink")
           }
         >
-          <Heart size={16} className={showSavedOnly ? "text-white" : "text-danger"} fill={showSavedOnly ? "currentColor" : "none"} />
+          <Heart size={16} className={showSavedOnly ? "text-white" : "text-danger"} fill={showSavedOnly ? "currentColor" : "none"} aria-hidden="true" />
           Saved
           <span className="font-mono text-xs">{savedCount}</span>
         </button>
@@ -74,13 +68,16 @@ export default function Navbar({
           type="button"
           className="md:hidden cursor-pointer shrink-0 rounded-lg border border-line p-2"
           onClick={() => setMobileOpen((v) => !v)}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
           {mobileOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
 
       {mobileOpen && (
-        <MobileMenu savedCount={savedCount} onClose={() => setMobileOpen(false)} onToggleSavedOnly={onToggleSavedOnly} />
+        <MobileMenu id="mobile-menu" savedCount={savedCount} showSavedOnly={showSavedOnly} onClose={() => setMobileOpen(false)} onToggleSavedOnly={onToggleSavedOnly} />
       )}
     </header>
   );

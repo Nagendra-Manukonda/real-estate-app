@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Property } from "@/app/types/property";
 import { formatPrice } from "@/app/lib/formatPrice";
 
@@ -13,9 +14,11 @@ export default function DealCard({ property }: { property: Property }) {
 
     return (
         <div className="relative flex items-center gap-3 rounded-2xl border border-line bg-panel p-3 pr-4 shadow-sm transition-all duration-300 hover:shadow-lg">
-            <img
+            <Image
                 src={property.img}
                 alt={property.title}
+                width={56}
+                height={56}
                 className="h-14 w-14 shrink-0 rounded-xl object-cover"
             />
 

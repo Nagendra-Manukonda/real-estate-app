@@ -7,6 +7,14 @@ export const PAGE_SIZE = 9;
 
 export const TYPES: PropertyType[] = ["Apartment", "Villa", "Independent House", "Studio"];
 
+export const NAV_LINKS = [
+  { id: "listings", label: "Listings" },
+  { id: "deals", label: "Deals" },
+  { id: "pro", label: "Pro" },
+  { id: "about", label: "About" },
+  { id: "contact", label: "Contact" },
+] as const;
+
 export const AMENITIES = [
   { key: "furnished", label: "Furnished" },
   { key: "parking", label: "Parking" },
